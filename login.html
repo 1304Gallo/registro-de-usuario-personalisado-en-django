@@ -1,0 +1,42 @@
+{% extends "Base/base.html" %}
+
+
+{% block content %}
+  {% if form.errors %}
+    <p>Your username and password didn't match. Please try again.</p>
+  {% endif %}
+
+  <form method="post">
+    {% csrf_token %}
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-5">
+          <div class="card shadow-lg border-0 rounded-lg mt-3 mb-3">
+            <div class="card-header justify-content-center">
+              <h3 class="font-weight-light my-7 text-center">Signin</h3>
+              <div class="form-group">
+
+               <div class="form-floating mb-3">
+                 <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username">
+                 <label for="floatingInputGroup1">Username</label>
+               </div>
+                <div class="form-floating">
+                  <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
+                  <label for="floatingPassword">Password</label>
+                </div>
+
+                <br>
+                <input type="hidden" name="next" value="{% url 'listar' %}"> <!-- Campo de entrada oculto para la variable "next" -->
+                <br>
+
+              </div>
+                <button class="col-md-12 btn btn-dark" type="submit">"Sign in"</button>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+
+
+{% endblock %}
